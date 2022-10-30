@@ -10,10 +10,8 @@ const { handleLogin } = require("./controllers/login");
 const db = knex({
   client: "pg",
   connection: {
-    host: DB_HOST,
-    user: DB_USER,
-    password: DB_PASSWORD,
-    database: DB_DATABASE,
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
   },
 });
 
