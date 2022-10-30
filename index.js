@@ -9,7 +9,12 @@ const { handleLogin } = require("./controllers/login");
 
 const db = knex({
   client: "pg",
-  connection: process.env.CONNECTION_URL,
+  connection: {
+    host: DB_HOST,
+    user: DB_USER,
+    password: DB_PASSWORD,
+    database: DB_DATABASE,
+  },
 });
 
 app.use(express.urlencoded({ extended: false }));
@@ -22,6 +27,6 @@ app.post("/login", (req, res) => handleLogin(req, res, db, bcrypt));
 
 app.post("/signup", (req, res) => handleSignup(req, res, db, bcrypt));
 
-app.listen(process.env.PORT || 8080, () => {
+app.listen(process.env.PORT || 7858, () => {
   console.log(`server is running on PORT: ${process.env.PORT}`);
 });
