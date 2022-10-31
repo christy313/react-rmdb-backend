@@ -1,17 +1,18 @@
-const handleLogin = (req, res, db, bcrypt) => {
+const handleLogin = (req, res, pool, bcrypt) => {
   const { username, email, password } = req.body;
 
   if (!email || !username || !password) {
     return res.status(400).json("Something went wrong");
   }
 
-  db.select("email", "hash")
+  pool
+    .select("email", "hash")
     .from("login")
     .where("email", "=", email)
     .then((data) => {
       const isValid = bcrypt.compareSync(password, data[0].hash);
       if (isValid) {
-        return db
+        return pool
           .select("*")
           .from("users")
           .where("email", "=", email)
