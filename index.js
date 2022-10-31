@@ -9,10 +9,11 @@ const { handleLogin } = require("./controllers/login");
 
 const db = knex({
   client: "pg",
-  connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: true,
-  },
+  connection: process.env.DATABASE_URL,
+  // connection: {
+  //   connectionString: process.env.DATABASE_URL,
+  //   ssl: true,
+  // },
 });
 
 app.use(express.urlencoded({ extended: false }));
