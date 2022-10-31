@@ -3,7 +3,7 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const knex = require("knex");
 const app = express();
-const pg = require("pg");
+// const pg = require("pg");
 
 // const environment = process.env.NODE_ENV || "production"; // if something else isn't setting ENV, use development
 // const configuration = require("./knexfile")[environment]; // require environment's settings from knexfile
@@ -16,11 +16,10 @@ const { handleLogin } = require("./controllers/login");
 
 const db = knex({
   client: "pg",
-  connection: process.env.DATABASE_URL,
-  // connection: {
-  //   connectionString: process.env.DATABASE_URL,
-  //   ssl: true,
-  // },
+  connection: {
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
+  },
 });
 
 app.use(express.urlencoded({ extended: false }));
