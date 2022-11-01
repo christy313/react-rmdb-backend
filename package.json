@@ -7,7 +7,6 @@
     "start": "node index.js",
     "start:dev": "nodemon index.js"
   },
-  "proxy": "https://ilovemovie.herokuapp.com/",
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -26,22 +26,8 @@ db.connect();
 // });
 
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 app.use(express.json());
-app.use(
-  cors({
-    origin: true,
-    optionsSuccessStatus: 200,
-    credentials: true,
-  })
-);
-app.options(
-  "*",
-  cors({
-    origin: true,
-    optionsSuccessStatus: 200,
-    credentials: true,
-  })
-);
 
 app.get("/", (req, res) => res.status(200).json("success"));
 
