@@ -24,7 +24,7 @@ const handleSignup = (req, res, db, bcrypt) => {
             email: loginEmail[0].email,
           })
           .then((user) => {
-            res.send(user[0]);
+            res.json(user[0]);
           });
       })
       .then(trx.commit)
