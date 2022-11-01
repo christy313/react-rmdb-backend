@@ -16,14 +16,15 @@ const { handleLogin } = require("./controllers/login");
 
 // const pool = new pg.Pool();
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 const db = knex({
   client: "pg",
-  connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: true,
-  },
+  connection: process.env.DATABASE_URL,
+  // connection: {
+  //   connectionString: process.env.DATABASE_URL,
+  //   ssl: true,
+  // },
 });
 
 // const db = knex({
@@ -46,6 +47,6 @@ app.post("/login", (req, res) => handleLogin(req, res, db, bcrypt));
 
 app.post("/signup", (req, res) => handleSignup(req, res, db, bcrypt));
 
-app.listen(process.env.PORT || 7858, () => {
+app.listen(process.env.PORT, () => {
   console.log(`server is running on PORT: ${process.env.PORT}`);
 });
