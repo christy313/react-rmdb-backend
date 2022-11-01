@@ -3,7 +3,7 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const knex = require("knex");
 const app = express();
-// const pg = require("pg");
+// const { Pg } = require("pg");
 
 // app.use(express.static("/public"));
 
@@ -18,13 +18,21 @@ const { handleLogin } = require("./controllers/login");
 
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
+// const db = new Pg({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
+
+// db.connect();
+
 const db = knex({
   client: "pg",
-  connection: process.env.DATABASE_URL,
-  // connection: {
-  //   connectionString: process.env.DATABASE_URL,
-  //   ssl: true,
-  // },
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 // const db = knex({
@@ -47,6 +55,6 @@ app.post("/login", (req, res) => handleLogin(req, res, db, bcrypt));
 
 app.post("/signup", (req, res) => handleSignup(req, res, db, bcrypt));
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log(`server is running on PORT: ${process.env.PORT}`);
 });
