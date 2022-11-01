@@ -1,29 +1,29 @@
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
-// const knex = require("knex");
+const knex = require("knex");
 const app = express();
-const { Client } = require("pg");
+// const { Client } = require("pg");
 
 const { handleSignup } = require("./controllers/signup");
 const { handleLogin } = require("./controllers/login");
 
-const db = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
-
-db.connect();
-
-// const db = knex({
-//   client: "pg",
+// const db = new Client({
 //   connectionString: process.env.DATABASE_URL,
 //   ssl: {
 //     rejectUnauthorized: false,
 //   },
 // });
+
+// db.connect();
+
+const db = knex({
+  client: "pg",
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
