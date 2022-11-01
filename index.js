@@ -1,27 +1,19 @@
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
-const knex = require("knex");
+// const knex = require("knex");
 const app = express();
 const { Client } = require("pg");
-
-// app.use(express.static("/public"));
-
-// const environment = process.env.NODE_ENV || "production"; // if something else isn't setting ENV, use development
-// const configuration = require("./knexfile")[environment]; // require environment's settings from knexfile
-// const db = require("knex")(configuration);
 
 const { handleSignup } = require("./controllers/signup");
 const { handleLogin } = require("./controllers/login");
 
-// const pool = new pg.Pool();
-
-// process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 const db = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
+  connection: {
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
   },
 });
 
