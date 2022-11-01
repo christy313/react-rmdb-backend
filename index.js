@@ -8,12 +8,12 @@ const { Client } = require("pg");
 const { handleSignup } = require("./controllers/signup");
 const { handleLogin } = require("./controllers/login");
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 const db = new Client({
-  connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: true,
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
   },
 });
 
