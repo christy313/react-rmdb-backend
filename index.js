@@ -8,8 +8,6 @@ const { Client } = require("pg");
 const { handleSignup } = require("./controllers/signup");
 const { handleLogin } = require("./controllers/login");
 
-// process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
-
 const db = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -24,16 +22,6 @@ db.connect();
 //   connectionString: process.env.DATABASE_URL,
 //   ssl: {
 //     rejectUnauthorized: false,
-//   },
-// });
-
-// const db = knex({
-//   client: "pg",
-//   connection: {
-//     host: process.env.HOST,
-//     user: process.env.USER,
-//     password: process.env.PASSWORD,
-//     database: process.env.DATABASE,
 //   },
 // });
 
