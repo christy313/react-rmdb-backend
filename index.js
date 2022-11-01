@@ -3,7 +3,7 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const knex = require("knex");
 const app = express();
-const { Pg } = require("pg");
+const { Client } = require("pg");
 
 // app.use(express.static("/public"));
 
@@ -18,7 +18,7 @@ const { handleLogin } = require("./controllers/login");
 
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
-const db = new Pg({
+const db = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false,
