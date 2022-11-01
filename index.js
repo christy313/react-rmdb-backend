@@ -3,7 +3,7 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const knex = require("knex");
 const app = express();
-// const { Client } = require("pg");
+const { Client } = require("pg");
 
 const { handleSignup } = require("./controllers/signup");
 const { handleLogin } = require("./controllers/login");
@@ -17,13 +17,25 @@ const { handleLogin } = require("./controllers/login");
 
 // db.connect();
 
-const db = knex({
-  client: "pg",
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+const db = new Client({
+  user: process.env.PGUSER,
+  host: process.env.PGHOST,
+  database: process.env.PGDATABASE,
+  password: process.env.PGPASSWORD,
+  port: process.env.PGPORT,
 });
+db.connect(function (err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+
+// const db = knex({
+//   client: "pg",
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
