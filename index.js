@@ -3,7 +3,7 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const knex = require("knex");
 const app = express();
-// const { Pg } = require("pg");
+const { Pg } = require("pg");
 
 // app.use(express.static("/public"));
 
@@ -18,22 +18,22 @@ const { handleLogin } = require("./controllers/login");
 
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
-// const db = new Pg({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     rejectUnauthorized: false,
-//   },
-// });
-
-// db.connect();
-
-const db = knex({
-  client: "pg",
+const db = new Pg({
   connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false,
   },
 });
+
+db.connect();
+
+// const db = knex({
+//   client: "pg",
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 // const db = knex({
 //   client: "pg",
