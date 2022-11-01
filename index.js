@@ -47,6 +47,6 @@ app.post("/login", (req, res) => handleLogin(req, res, db, bcrypt));
 
 app.post("/signup", (req, res) => handleSignup(req, res, db, bcrypt));
 
-app.listen(process.env.PGPORT, () => {
-  console.log(`server is running on PORT: ${process.env.PGPORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`server is running on PORT: ${process.env.PORT}`);
 });
