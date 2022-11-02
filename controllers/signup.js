@@ -8,7 +8,7 @@ const handleSignup = (req, res, db, bcrypt) => {
   const saltRounds = 10;
   const hash = bcrypt.hashSync(password, saltRounds);
 
-  db.runTransaction((trx) => {
+  db.transaction((trx) => {
     trx
       .insert({
         hash: hash,
