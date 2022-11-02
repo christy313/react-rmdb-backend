@@ -14,15 +14,13 @@ const { handleLogin } = require("./controllers/login");
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
-const db = new Client({
+const db = knex({
   client: "pg",
   connection: {
     connectionString: process.env.DATABASE_URL,
     ssl: true,
   },
 });
-
-db.connect();
 
 // railway
 
