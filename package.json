@@ -7,6 +7,13 @@
     "start": "node index.js",
     "start:dev": "nodemon index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christy313/react-rmdb-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/christy313/react-rmdb-backend/issues"
+  },
   "homepage": "https://github.com/christy313/react-rmdb-backend",
   "keywords": [],
   "author": "",
