@@ -1,9 +1,6 @@
 const handleSignup = (req, res, db, bcrypt) => {
   const { username, email, password } = req.body;
 
-  console.log("UserName-", username, "Email-", email, "password", password);
-  console.log("test test Body Request", req.body);
-
   if (!email || !username || !password) {
     return res.status(400).json("Something went wrong");
   }
