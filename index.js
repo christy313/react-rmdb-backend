@@ -14,24 +14,25 @@ const { handleLogin } = require("./controllers/login");
 
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
-const db = knex({
-  client: "pg",
-  connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: true,
-  },
-});
+// const db = knex({
+//   client: "pg",
+//   connection: {
+//     connectionString: process.env.DATABASE_URL,
+//     ssl: true,
+//   },
+// });
 
 // railway
 
-// const db = knex({
-// connection: {
-//   host: "process.env.PGHOST",
-//   user: "process.env.PGUSER",
-//   password: "process.env.PGPASSWORD",
-//   database: "process.env.PGDATABASE",
-// },
-// });
+const db = knex({
+  client: "pg",
+  connection: {
+    host: "process.env.PGHOST",
+    user: "process.env.PGUSER",
+    password: "process.env.PGPASSWORD",
+    database: "process.env.PGDATABASE",
+  },
+});
 
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
