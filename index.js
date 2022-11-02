@@ -17,6 +17,16 @@ const { handleLogin } = require("./controllers/login");
 
 // db.connect();
 
+const db = knex({
+  client: "pg",
+  connection: {
+    host: "process.env.PGHOST",
+    user: "process.env.PGUSER",
+    password: "process.env.PGPASSWORD",
+    database: "process.env.PGDATABASE",
+  },
+});
+
 // const db = new Client({
 //   user: process.env.PGUSER,
 //   host: process.env.PGHOST,
@@ -29,13 +39,13 @@ const { handleLogin } = require("./controllers/login");
 //   console.log("Connected!");
 // });
 
-const db = knex({
-  client: "pg",
-  connectionString: process.env.DATABASE_URL,
-  // ssl: {
-  //   rejectUnauthorized: false,
-  // },
-});
+// const db = knex({
+//   client: "pg",
+//   connectionString: process.env.DATABASE_URL,
+//   // ssl: {
+//   //   rejectUnauthorized: false,
+//   // },
+// });
 
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
