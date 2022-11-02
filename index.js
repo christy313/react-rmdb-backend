@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
@@ -10,43 +10,26 @@ const { Client } = require("pg");
 const { handleSignup } = require("./controllers/signup");
 const { handleLogin } = require("./controllers/login");
 
-// const db = new Client({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     rejectUnauthorized: false,
-//   },
-// });
+// heroku
 
-// db.connect();
-
-const db = knex({
-  client: "pg",
-  connection: {
-    host: "process.env.PGHOST",
-    user: "process.env.PGUSER",
-    password: "process.env.PGPASSWORD",
-    database: "process.env.PGDATABASE",
+const db = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
   },
 });
 
-// const db = new Client({
-//   user: process.env.PGUSER,
-//   host: process.env.PGHOST,
-//   database: process.env.PGDATABASE,
-//   password: process.env.PGPASSWORD,
-//   port: process.env.PGPORT,
-// });
-// db.connect(function (err) {
-//   if (err) throw err;
-//   console.log("Connected!");
-// });
+db.connect();
+
+// railway
 
 // const db = knex({
-//   client: "pg",
-//   connectionString: process.env.DATABASE_URL,
-//   // ssl: {
-//   //   rejectUnauthorized: false,
-//   // },
+// connection: {
+//   host: "process.env.PGHOST",
+//   user: "process.env.PGUSER",
+//   password: "process.env.PGPASSWORD",
+//   database: "process.env.PGDATABASE",
+// },
 // });
 
 app.use(express.urlencoded({ extended: false }));
