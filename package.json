@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "react-rmdb-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,6 +7,7 @@
     "start": "node index.js",
     "start:dev": "nodemon index.js"
   },
+  "homepage": "https://github.com/christy313/react-rmdb-backend",
   "keywords": [],
   "author": "",
   "license": "ISC",
