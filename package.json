@@ -7,7 +7,6 @@
     "start": "node index.js",
     "start:dev": "nodemon index.js"
   },
-  "homepage": "https://github.com/christy313/react-rmdb-backend",
   "keywords": [],
   "author": "",
   "license": "ISC",
