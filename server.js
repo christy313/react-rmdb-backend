@@ -1,13 +1,19 @@
-const express = require("express");
-const cors = require("cors");
-const bcrypt = require("bcrypt");
-const knex = require("knex");
+// const express = require("express");
+// const cors = require("cors");
+// const bcrypt = require("bcrypt");
+// const knex = require("knex");
 const app = express();
 
-const { handleSignup } = require("./controllers/signup");
-const { handleLogin } = require("./controllers/login");
+import express from "express";
+import cors from "cors";
+import bcrypt from "bcrypt";
+import knex from "knex";
 
-// process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+// const { handleSignup } = require("./controllers/signup");
+// const { handleLogin } = require("./controllers/login");
+
+import { handleSignup } from "./controllers/signup";
+import { handleLogin } from "./controllers/login";
 
 const db = knex({
   client: "pg",
