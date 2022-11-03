@@ -6,7 +6,7 @@
 import express from "express";
 import cors from "cors";
 import bcrypt from "bcrypt";
-import knex from "knex";
+import { Knex } from "knex";
 
 // const { handleSignup } = require("./controllers/signup");
 // const { handleLogin } = require("./controllers/login");
@@ -15,7 +15,7 @@ import { handleSignup } from "../controllers/signup";
 import { handleLogin } from "../controllers/login";
 
 const app = express();
-const db = knex({
+const db = Knex({
   client: "pg",
   connection: {
     connectionString: process.env.DATABASE_URL,
