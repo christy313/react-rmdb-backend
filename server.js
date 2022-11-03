@@ -1,20 +1,12 @@
-// const express = require("express");
-// const cors = require("cors");
-// const bcrypt = require("bcrypt");
-// const knex = require("knex");
-
-import express from "express";
-import cors from "cors";
-import bcrypt from "bcrypt";
-import knex from "knex";
-
-// const { handleSignup } = require("./controllers/signup");
-// const { handleLogin } = require("./controllers/login");
-
-import { handleSignup } from "../controllers/signup";
-import { handleLogin } from "../controllers/login";
-
+const express = require("express");
+const cors = require("cors");
+const bcrypt = require("bcrypt");
+const knex = require("knex");
 const app = express();
+
+const { handleSignup } = require("./controllers/signup");
+const { handleLogin } = require("./controllers/login");
+
 const db = knex({
   client: "pg",
   connection: {
@@ -23,11 +15,7 @@ const db = knex({
 });
 
 app.use(express.urlencoded({ extended: false }));
-app.use(
-  cors({
-    origin: true,
-  })
-);
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => res.status(200).json("success"));
