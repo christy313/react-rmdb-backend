@@ -2,7 +2,6 @@
 // const cors = require("cors");
 // const bcrypt = require("bcrypt");
 // const knex = require("knex");
-const app = express();
 
 import express from "express";
 import cors from "cors";
@@ -15,6 +14,7 @@ import knex from "knex";
 import { handleSignup } from "./controllers/signup";
 import { handleLogin } from "./controllers/login";
 
+const app = express();
 const db = knex({
   client: "pg",
   connection: {
