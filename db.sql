@@ -5,7 +5,7 @@ CREATE TABLE favlist(
   userEmail unique relation to other table login email 
 );
 
--- Heroku
+-- Heroku + render
 -- CREATE TABLE login(
 --   id serial PRIMARY KEY,
 --   hash VARCHAR(100) NOT NULL,
@@ -20,17 +20,17 @@ CREATE TABLE favlist(
 -- );
 
 -- Railway
-CREATE TABLE login(
-  id serial PRIMARY KEY,
-  hash text NOT NULL,
-  username text,
-  email text UNIQUE
-);
+-- CREATE TABLE login(
+--   id serial PRIMARY KEY,
+--   hash text NOT NULL,
+--   username text,
+--   email text UNIQUE
+-- );
 
-CREATE TABLE users(
-  id serial PRIMARY KEY,
-  username text,
-  email text UNIQUE
-);
+-- CREATE TABLE users(
+--   id serial PRIMARY KEY,
+--   username text,
+--   email text UNIQUE
+-- );
 
 -- Note: there's no VARCHAR in railway, use text instead
