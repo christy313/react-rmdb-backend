@@ -1,30 +1,13 @@
-// require("dotenv").config();
-
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 const knex = require("knex");
 const app = express();
-const { Client } = require("pg");
 
 const { handleSignup } = require("./controllers/signup");
 const { handleLogin } = require("./controllers/login");
 
-// heroku
-
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
-
-// const db = knex({
-//   client: "pg",
-//   connection: {
-//     connectionString: process.env.DATABASE_URL,
-//     ssl: true,
-//   },
-// });
-
-// railway
-
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 const db = knex({
   client: "pg",
