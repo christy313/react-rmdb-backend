@@ -11,8 +11,8 @@ import knex from "knex";
 // const { handleSignup } = require("./controllers/signup");
 // const { handleLogin } = require("./controllers/login");
 
-import { handleSignup } from "./controllers/signup";
-import { handleLogin } from "./controllers/login";
+import { handleSignup } from "../controllers/signup";
+import { handleLogin } from "../controllers/login";
 
 const app = express();
 const db = knex({
