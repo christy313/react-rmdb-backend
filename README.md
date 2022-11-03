@@ -35,7 +35,7 @@ Open [http://localhost:8080](http://localhost:8080) to view it in your browser.
 
 ## Stacks
 
-Front-end: React / Hooks / styled-component 
+Front-end: React / Hooks / styled-component \
 Back-end: Node / Express / PostgreSQL / [knex](https://knexjs.org/)
 
 ## File structure
